@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>비동기 작업을 동기화하기</title>
+  <script>
+    // 전통적인 $.ajax 동기화 => callback 지옥
+    $.ajax({
+      url: '주문',
+      success:function() {
+        $.ajax({
+          url: '물좀 주세요',
+          success:function() {
+            $.ajax({
+              url: '반찬 추가요',
+              success:function() {
+                console.log('끝');
+              }
+            });
+          }
+        });
+      }
+    });
+    // ES8 에서 async-await 문 등장, 동기/비동기가 똑같다 (await).
+    try {
+      await $.ajax('주문');
+      await $.ajax('물');
+      await $.ajax('반찬');
+      console.log('끝');
+    }catch(err) {
+      console.log(err);
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

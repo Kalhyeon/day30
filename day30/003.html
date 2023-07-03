@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>Document</title>
+  <script>
+    // 비동기에 await, async 적용
+    // result1, result2 에 미래의 값이 들어온다 => 예약 객체 (Promise)대입
+    async function aaa() {
+      const result1 = await $.ajax('aaa');
+      const result2 = await $.ajax('bbb');
+      console.log(result1);
+      console.log(result2);
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
